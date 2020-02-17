@@ -19,7 +19,7 @@
     command: rm -rf /opt/SP/apps/tomcat/webapps/*
 
   - name: Copy bankdata Project War Files
-    copy: src=/root/.jenkins/workspace/dev_artifact/bankdata-0.0.1-SNAPSHOT.war dest=/opt/SP/apps/tomcat/webapps/ mode=0644
+    copy: src=/root/.jenkins/workspace/dev_artifact/bankdata-0.0.1-SNAPSHOT.war dest=/opt/SP/apps/tomcat/webapps/ROOT.war mode=0644
     notify: 
     - Restart Tomcat
 
