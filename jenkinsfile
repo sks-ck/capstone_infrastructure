@@ -1,0 +1,28 @@
+node {
+    stage('Git-Checkout') {
+   git 'https://github.com/surajkumarsahoo/capstone_infrastructure.git'
+  }
+stage('Jfrog Artifacory download'){
+        def server= Artifactory.server 'Artifactory'
+                    def downloadartifact= """{
+                        "files": [{
+                        "pattern": "dev/*.war",
+                        "target": "/root/.jenkins/workspace/dev_artifact/"}]
+                    }"""
+        server.download(downloadartifact)
+}
+stage('Jfrog Artifacory download'){
+        def server= Artifactory.server 'Artifactory'
+                    def downloadartifact= """{
+                        "files": [{
+                        "pattern": "qa/*.war",
+                        "target": "/root/.jenkins/workspace/qa_artifact/"}]
+                    }"""
+        server.download(downloadartifact)
+}
+
+   stage('Prod Deployment on AWS'){
+      sh 'ansible-playbook  --key=/root/.ssh/mykey.pem -i /root/.jenkins/workspace/capstone_bankdata_pipeline_instance/jenkins-ci.ini web-playbook.yaml -u ubuntu -v'
+   }
+
+}
