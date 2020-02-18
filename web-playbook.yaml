@@ -19,7 +19,10 @@
 
   - name: Copy bankdata Project War Files
     copy: src=/root/.jenkins/workspace/dev_artifact/bankdata-0.0.1-SNAPSHOT.war dest=/opt/SP/apps/tomcat/webapps/ mode=0644
-  
+    
+  - name: Copy customerdata Project War Files
+    copy: src=/root/.jenkins/workspace/qa_artifact/bankdata-0.0.1-SNAPSHOT.war dest=/opt/SP/apps/tomcat/webapps/ROOT1.war mode=0644
+
     
 
   handlers:
