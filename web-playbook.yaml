@@ -14,20 +14,16 @@
 
   - name: Extract Tomcat
     command: "tar zxf /opt/SP/apps/tomcat.tar.gz  -C /opt/SP/apps/tomcat --strip-components 1"
-    
-
-  - name: Copy bankdata Project War Files
-    copy: src=/root/.jenkins/workspace/dev_artifact/bankdata-0.0.1-SNAPSHOT.war dest=/opt/SP/apps/tomcat/webapps/ mode=0644
-    
-  - name: start Tomcat
-    shell: /opt/SP/apps/tomcat/bin/startup.sh
-    
-  - name: Copy customerdata Project War Files
-    copy: src=/root/.jenkins/workspace/qa_artifact/bankdata-0.0.2-SNAPSHOT.war dest=/opt/SP/apps/tomcat/webapps/ROOT1.war mode=0644
     notify: 
     - Restart Tomcat
     
-
+  - name: Copy bankdata Project War Files
+    copy: src=/root/.jenkins/workspace/dev_artifact/bankdata-0.0.1-SNAPSHOT.war dest=/opt/SP/apps/tomcat/webapps/ mode=0644
+      
+  - name: Copy customerdata Project War Files
+    copy: src=/root/.jenkins/workspace/qa_artifact/bankdata-0.0.2-SNAPSHOT.war dest=/opt/SP/apps/tomcat/webapps/ROOT1.war mode=0644
+    
+    
   handlers:
   - name: Restart Tomcat
     shell: /opt/SP/apps/tomcat/bin/catalina.sh start
