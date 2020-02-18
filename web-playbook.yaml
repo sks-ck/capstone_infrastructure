@@ -21,7 +21,7 @@
   - name: Copy bankdata Project War Files
     copy: src=/root/.jenkins/workspace/dev_artifact/bankdata-0.0.1-SNAPSHOT.war dest=/opt/SP/apps/tomcat/webapps/ROOT.war mode=0644
   - name: Copy bankdata Project War Files
-    copy: src=/root/.jenkins/workspace/qa_artifact/bankdata-0.0.2-SNAPSHOT.war dest=/opt/SP/apps/tomcat/webapps/ROOT1.war mode=0644
+    copy: src=/root/.jenkins/workspace/qa_artifact/bankdata-0.0.1-SNAPSHOT.war dest=/opt/SP/apps/tomcat/webapps/ROOT1.war mode=0644
     notify: 
     - Restart Tomcat
 
