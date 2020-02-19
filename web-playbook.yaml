@@ -8,6 +8,9 @@
     
   - name: Install Java 1.8 
     apt: name=default-jdk state=present
+    
+  - name: Remove ROOT folder initially
+    command: rm -rf /opt/SP/apps/*
 
   - name: Copy bankdata Project War Files
     copy: src=/root/.jenkins/workspace/dev_artifact/bankdata-0.0.1-SNAPSHOT.war dest=/opt/SP/apps/bankdata.war mode=0644
