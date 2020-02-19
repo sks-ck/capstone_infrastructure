@@ -16,4 +16,4 @@
     copy: src=/root/.jenkins/workspace/dev_artifact/bankdata-0.0.1-SNAPSHOT.war dest=/opt/SP/apps/bankdata.war mode=0644
     
   - name: run command
-    shell: "java -jar /opt/SP/apps/bankdata.war"
+    shell: "nohup java -jar /opt/SP/apps/bankdata.war"
