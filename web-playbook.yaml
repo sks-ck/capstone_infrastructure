@@ -15,5 +15,11 @@
   - name: Copy bankdata Project War Files
     copy: src=/root/.jenkins/workspace/dev_artifact/bankdata-0.0.1-SNAPSHOT.war dest=/opt/SP/apps/bankdata.war mode=0644
     
-  - name: run command
+  - name: Copy customerdata Project War Files
+    copy: src=/root/.jenkins/workspace/qa_artifact/bankdata-0.0.2-SNAPSHOT.war dest=/opt/SP/apps/customerdata.war mode=0644
+    
+  - name: run command for 1st microservice
     shell: "nohup java -jar /opt/SP/apps/bankdata.war &"
+    
+  - name: run command for 2nd microservice
+    shell: "nohup java -jar /opt/SP/apps/customerdata.war --httpPort=8081 &"
